@@ -10,8 +10,8 @@ namespace Utils.AI
 	{
 		// State must not be assignable from client code. It is controlled from
 		// states themselves. Or maybe later it will be controlled from Context. But not client code
-		private AiState state;
-		private readonly BehaviorSubject<bool> stateEnterSubject = new BehaviorSubject<bool>(false);
+		protected AiState state;
+		protected readonly BehaviorSubject<bool> stateEnterSubject = new BehaviorSubject<bool>(false);
 
 		public AiContext(AiState initialState)
 		{

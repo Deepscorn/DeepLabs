@@ -71,6 +71,7 @@ namespace Assets.Sources.Util.UI
 
         private void ShowInternal(string message, float duration)
         {
+	        Debug.Log("Toast: " + message);
             this.message = message;
             showingDuration = duration;
             showingStartedAt = Time.time;
