@@ -43,3 +43,6 @@ sysinfo.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# DeepLabs structure specific
+Core/**/*.meta
