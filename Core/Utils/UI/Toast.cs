@@ -26,7 +26,6 @@ namespace Assets.Sources.Util.UI
 
         private void UpdateScale()
         {
-            NativeApi.UpdateAllData();
             var scale = NativeApi.GuiScale;
             rectWidth *= scale;
             rectheight *= scale;

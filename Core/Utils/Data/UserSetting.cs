@@ -35,7 +35,6 @@ namespace Assets.Sources.Util.Data
 
         private static string GetUserId()
         {
-            NativeApi.UpdateAllData();
             var result = NativeApi.UserId;
             return result ?? NoUserId;
         }

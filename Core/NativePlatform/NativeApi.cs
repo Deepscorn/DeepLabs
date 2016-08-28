@@ -12,22 +12,30 @@ namespace Assets.Sources.NativePlatform
     // todo: Just make it as singleton returning class based on preprocessor definition
     public static class NativeApi
     {
-        public static string AccessToken { get; private set; }
+        public static string AccessToken { get { return Platform.GetAccessToken(); } }
 
-        public static string AppId { get; private set; }
+        public static string AppId { get { return Platform.GetAppId(); } }
 
-        public static string AppProductId { get; private set; }
+        public static string AppProductId { get { return Platform.GetAppProductId(); } }
 
-        public static string AppPromoId { get; private set; }
+        public static string UserId { get { return Platform.GetUserId(); } }
 
-        public static string UserId { get; private set; }
+        // it's here because on iOS Screen.dpi may be not what we want - just not tested it yet
+        public static float GuiScale
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return 1;
+#else
+                return Screen.dpi / 160f;
+#endif
+            }
+        }
 
-        // todo: try Screen.dpi
-        public static float GuiScale { get; private set; }
+        public static string LangCode { get { return Platform.GetLangCode(); } }
 
-        public static string LangCode { get; private set; }
-
-        public static string PlatformType { get; private set; }
+        public static string PlatformType { get { return Platform.GetPlatformType(); } }
 
         public static string ApiUrl { get { return Platform.GetApiUrl(); } }
 
@@ -45,24 +53,6 @@ namespace Assets.Sources.NativePlatform
             {
                 return Platform.GetUserId() != null && Platform.GetAccessToken() != null;
             }
-        }
-
-        public static void UpdateAllData()
-        {
-            AppId = Platform.GetAppId();
-            AppProductId = Platform.GetAppProductId();
-            AppPromoId = Platform.GetAppPromoId();
-            GuiScale = Platform.GetGuiScale();
-            LangCode = Platform.GetLangCode();
-            PlatformType = Platform.GetPlatformType();
-
-            UpdateAuthorizationData();
-        }
-
-        public static void UpdateAuthorizationData()
-        {
-            AccessToken = Platform.GetAccessToken();
-            UserId = Platform.GetUserId();
         }
 
         public static IList<PurchaseInfo> GetInAppPurchases(string userId)

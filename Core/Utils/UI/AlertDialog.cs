@@ -29,7 +29,6 @@ namespace Assets.Sources.Util.UI
 
         private void UpdateScale()
         {
-            NativeApi.UpdateAllData();
             var scale = NativeApi.GuiScale;
             fontSize = (int)(fontSize * scale);
             rectWidth *= scale;
