@@ -2,8 +2,8 @@
 // http://www.apache.org/licenses/LICENSE-2.0
 using System;
 using System.Net;
+using Assets.Plugins.DeepLabs.Core.Utils.Log;
 using Assets.Sources.NativePlatform;
-using Assets.Sources.Util.Log;
 using Assets.Sources.Util.Network.Requests;
 using RestSharp;
 
@@ -77,7 +77,7 @@ namespace Assets.Sources.Util.Network
             {
                 if (request.Error != null)
                 {
-                    LogProxy.Log("Request error (custom error-handling logic is set): " + request.Error);
+                    Lc.D("Request error (custom error-handling logic is set): " + request.Error);
                 }
                 onFinish(response, response.Error);
             });

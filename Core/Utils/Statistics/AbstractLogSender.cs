@@ -3,8 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Assets.Plugins.DeepLabs.Core.Utils.Log;
 using Assets.Sources.Util.Concurrent;
-using Assets.Sources.Util.Log;
 
 namespace Assets.Sources.Util.Statistics
 {
@@ -47,7 +47,7 @@ namespace Assets.Sources.Util.Statistics
             }
             catch (Exception e)
             {
-                LogProxy.LogError(e.ToString());
+                Lc.Assertion(e);
             }
         }
 

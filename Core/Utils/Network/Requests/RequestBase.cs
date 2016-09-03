@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Sources.Util.Log;
+using Assets.Plugins.DeepLabs.Core.Utils.Log;
 using RestSharp;
 
 namespace Assets.Sources.Util.Network.Requests
@@ -130,7 +130,7 @@ namespace Assets.Sources.Util.Network.Requests
             var requestPath = BuildRequestPath();
             var requestMethodType = RequestMethodType();
 
-            LogProxy.Log(requestMethodType + ": " + requestPath);
+            Lc.D(requestMethodType + ": " + requestPath);
 
             var request = new RestRequest(requestPath, requestMethodType);
             request.RequestFormat = DataFormat.Json;
@@ -145,7 +145,7 @@ namespace Assets.Sources.Util.Network.Requests
                 var body = request.Parameters.FirstOrDefault(p => p.Type == ParameterType.RequestBody);
                 if (body != null)
                 {
-                    LogProxy.Log("Request body: " + body.Value);
+                    Lc.D("Request body: " + body.Value);
                 }
             }
 
@@ -166,11 +166,11 @@ namespace Assets.Sources.Util.Network.Requests
                     errorMessage = response.Content;
                 }
                 Error = new RequestError(errorMessage, statusCode, response.ResponseStatus);
-                LogProxy.Log(Error.ToString());
+                Lc.D(Error.ToString());
             }
             else
             {
-                LogProxy.Log("Response data: " + response.Content);
+                Lc.D("Response data: " + response.Content);
             }
         }
 

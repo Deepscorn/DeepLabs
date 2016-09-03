@@ -4,9 +4,9 @@
 
 using System;
 using System.Collections.Generic;
+using Assets.Plugins.DeepLabs.Core.Utils.Log;
 using Assets.Sources.Logic.Data;
 using Assets.Sources.Util.Data;
-using Assets.Sources.Util.Log;
 using Assets.Sources.Util.UI;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ namespace Assets.Sources.NativePlatform.Platforms
         {
             var purchase = new PurchaseInfo(userId, orderId, "0", string.Format("productId : {0}", productId), "this is a test from Unity player");
             purchases.Add(purchase);
-            LogProxy.Log("Bought " + purchase.ToString());
+            Lc.D("Bought " + purchase);
 
             GameObject.Find(callBackObj).SendMessage(callbackMethod, null);
         }

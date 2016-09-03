@@ -2,7 +2,6 @@
 // http://www.apache.org/licenses/LICENSE-2.0
 using UnityEngine;
 using System.Collections;
-using Assets.Sources.Util.Log;
 
 namespace Assets.Sources.Scripts.Basic
 {
